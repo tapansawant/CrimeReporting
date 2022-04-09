@@ -1,0 +1,52 @@
+{% extends "base_admin.html"%}
+{% block content %}
+<body>
+    <div class="container container">
+
+        <div class="row">
+            <div class="col col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12 col-xxl-12">
+                <form action="/viewcrimes-date" method="post">
+                    <table class="table table-borderless">
+                        <tr>
+                            <td style="color:rgb(250, 248, 252)" class="font-weight-bold"> SELECT DATE : </td>
+                            <td><input type="date" name="date" class="form-control" ></td>
+                        </tr>
+                        <tr>
+                            <td></td>
+                            <td><button class = "btn btn-success"> SEARCH </button></td>
+                        </tr>
+                    </>
+                </form>
+            </div>
+        </div>
+        <div class="container">
+            <div class="row">
+                <div class="col col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12 col-xxl-12">
+                    {% if status %}
+                    <table class="table">
+                        <thead>
+                          <tr>
+                            <th scope="col" style="color:rgb(210, 235, 147)" class="font-weight-bold">ID</th>
+                            <th scope="col" style="color:rgb(210, 235, 147)" class="font-weight-bold">NAME OF REPOETER</th>
+                            <th scope="col" style="color:rgb(210, 235, 147)" class="font-weight-bold">DESCRIPTION</th>
+                            <th scope="col" style="color:rgb(210, 235, 147)" class="font-weight-bold">REMARKS</th>
+                            <th scope="col" style="color:rgb(210, 235, 147)" class="font-weight-bold">DATE</th>
+                          </tr>
+                        </thead>
+                        <tbody>
+                         {% for row in crime %}
+                            <tr>
+                                <th scope="row" style="color:rgb(250, 248, 252)" class="font-weight-bold">{{row[0] }}</th>
+                                <td style="color:rgb(250, 248, 252)" class="font-weight-bold">{{ row[1] }}</td>
+                                <td style="color:rgb(250, 248, 252)" class="font-weight-bold">{{ row[2] }}</td>
+                                <td style="color:rgb(250, 248, 252)" class="font-weight-bold">{{ row[3] }}</td>
+                                <td style="color:rgb(250, 248, 252)" class="font-weight-bold">{{ row[4] }}</td>
+                            </tr>
+                         {% endfor %}
+                        </tbody>
+                      </table>
+                    {% endif %}
+                </div>
+            </div>
+    </div>
+{% endblock %}
